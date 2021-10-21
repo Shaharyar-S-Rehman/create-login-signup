@@ -48,7 +48,7 @@ function Login() {
         .then((res) => {
           console.log("res: ", res.data);
 
-          if(res.data.email){
+          if (res.data.email) {
             history.push("/")
           }
 
@@ -61,7 +61,7 @@ function Login() {
   return (
     <div style={{ margin: "0 20% 0 20%" }}>
       <br />
-      <h1 style={{textAlign:"center", color:"whitesmoke", textDecoration: "5px solid underline",textDecorationColor:"brown" }}>Login</h1>
+      <h1 style={{ textAlign: "center", color: "whitesmoke", textDecoration: "5px solid underline", textDecorationColor: "brown" }}>Login</h1>
       <br />
 
       <form onSubmit={formik.handleSubmit}>
@@ -96,9 +96,11 @@ function Login() {
 
             error={formik.touched.password && Boolean(formik.errors.password)}
             helperText={formik.touched.password && formik.errors.password}
-          />
-
-          <Button fullWidth variant="contained" color="primary" type="submit">Login</Button>
+          /> 
+          <div>
+            <Button style={{ width: "20%",}} variant="contained" color="primary" type="submit">Login</Button>
+            <Button style={{ width: "20%", marginLeft:"5px" }} onClick={() => { history.push("/signup") }} variant="contained" color="primary">I have no account</Button>
+          </div>
         </Stack>
 
       </form>

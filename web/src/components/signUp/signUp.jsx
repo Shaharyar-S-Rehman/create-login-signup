@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 import axios from 'axios';
-
+import{  useHistory } from "react-router-dom";
 import { Formik, Field, Form, useFormik } from "formik";
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
@@ -34,6 +34,7 @@ const validationSchema = yup.object({
 });
 
 function SignUp() {
+    let history = useHistory();
 
     const formik = useFormik({
         validationSchema: validationSchema,
@@ -60,7 +61,7 @@ function SignUp() {
 
     return (
         <div style={{ margin: "0 20% 0 20%" }}>
-            <h1 style={{ textAlign: "center", color: "whitesmoke", textDecoration: "5px solid underline",textDecorationColor:"brown" }}>SignUp</h1>
+            <h1 style={{ textAlign: "center", color: "whitesmoke", textDecoration: "5px solid underline", textDecorationColor: "brown" }}>SignUp</h1>
             <br />
             <form onSubmit={formik.handleSubmit}>
                 <Stack spacing={2}>
@@ -140,8 +141,12 @@ function SignUp() {
                         error={formik.touched.password && Boolean(formik.errors.password)}
                         helperText={formik.touched.password && formik.errors.password}
                     />
-
-                    <Button fullWidth variant="contained" color="primary" type="submit">Signup</Button>
+                    <br />
+                    <div>
+                        <Button style={{ width: "20%", margin: 'auto' }} variant="contained" color="primary" type="submit">Signup</Button>
+                        <Button style={{ width: "20%", marginLeft:"5px" }} onClick={() => { history.push("/login") }} variant="contained" color="primary">I have an account</Button>
+          
+                    </div>
                 </Stack>
 
             </form>

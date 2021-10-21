@@ -11,6 +11,8 @@ const User = mongoose.model('User', {
     name: String,
     email: String,
     password: String,
+    address: String,
+    number: String,
     created: { type: Date, default: Date.now },
 });
 
